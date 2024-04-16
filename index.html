@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars</title>
+    <link rel="shortcut icon" href="assets/star-wars-4.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+          <a href="index.html"><img src="assets/star-wars-2.svg" class="logo"></a>
+          <div class="menu">
+            <a href id ='about'>О нас</a>
+            <a href id ='character-menu'>Персонажи</a>
+          </div>
+        </div>
+      </header>
+      <section class="hero">
+        <div class="container">
+          <h1>Star Wars</h1>
+        </div>
+     <img src = 'assets/starwars.jpeg '>
+      </section>
+  
+    <div class="about">
+        <h3>About Us</h3>
+        <p>Star Wars is an American epic space opera media franchise created by George Lucas, which began with the eponymous 1977 film[a] and quickly became a worldwide pop culture phenomenon. The franchise has been expanded into various films and other media, including television series, video games, novels, comic books, theme park attractions, and themed areas, comprising an all-encompassing fictional universe.[b] Star Wars is one of the highest-grossing media franchises of all time.</p>
+    </div>
+    <section class="partners">
+        <div class="container">
+            <div class="arrows">
+                <button id="partners_left" onclick="scrolling('partners', 'left')"><img src="assets/arrow_left.svg"></button>
+                <button id="partners_right" onclick="scrolling('partners', 'right')"><img src="assets/arrow_right.svg"></button>
+            </div>
+
+            <div class="logos" id="partners">
+                <div class="logo-gradient" id="partners_gradient"></div>
+                <div class="logo-gradient second hide" id="partners_gradient2"></div>
+              
+               <a href = 'details.html'>
+
+                <div id="characters-list"></div>
+               </a> 
+                    <!-- Dynamically loaded character divs will go here -->
+                
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

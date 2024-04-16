@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"><link rel="shortcut icon" href="assets/star-wars-4.svg" type="image/x-icon">
+    <title>Character Details</title>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+          <a href="index.html"><img src="assets/star-wars-2.svg" class="logo"></a>
+          <div class="menu">
+            <a href id ='about'>О нас</a>
+            <a href id ='character-menu'>Персонажи</a>
+          </div>
+        </div>
+      </header>
+    <h1>Character Details</h1>
+    <div id="detail-container">
+        <img src = 'assets/star-wars-movies-characters.webp'width = 450 height = 250>
+        <div id="films"></div>
+        <div id="starships"></div>
+       
+    </div>
+    <div id="vehicles-container">
+     
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const character = JSON.parse(localStorage.getItem('currentCharacter'));
+
+        // Handle films
+        const filmsContainer = document.getElementById('films');
+        filmsContainer.innerHTML = '<h2>Films</h2>';
+        character.films.forEach(filmUrl => {
+            fetch(filmUrl)
+            .then(response => response.json())
+            .then(film => {
+                filmsContainer.innerHTML += `<p>${film.title}</p>`;
+            });
+        });
+
+
+        const starshipsContainer = document.getElementById('starships');
+        starshipsContainer.innerHTML = '<h2>Starships</h2>';
+        character.starships.forEach(shipUrl => {
+            fetch(shipUrl)
+            .then(response => response.json())
+            .then(ship => {
+                starshipsContainer.innerHTML += `<p>${ship.name}</p>`;
+            });
+        });
+
+
+        const vehiclesContainer = document.getElementById('vehicles-container');
+        vehiclesContainer.innerHTML = '<h1>Vehicles</h1>';
+        character.vehicles.forEach(vehicleUrl => {
+            fetch(vehicleUrl)
+            .then(response => response.json())
+            .then(vehicle => {
+
+                const vehicleDiv = document.createElement('div');
+                vehicleDiv.className = 'vehicle';
+                vehicleDiv.innerHTML = `
+                <h3>${vehicle.name}</h3>
+                <p>Model: ${vehicle.model}</p>
+                <p>Manufacturer: ${vehicle.manufacturer}</p>
+                <p>Length: ${vehicle.length}</p>
+                <p>Max Atmosphering Speed: ${vehicle.max_atmosphering_speed}</p>
+                <p>Crew: ${vehicle.crew}</p>
+                <p>Speed: ${vehicle.speed}</p>
+                <img src = 'assets/star-wars-the-rise-of-skywalker.jpg' width= 300, height =200>
+                `;
+                vehiclesContainer.appendChild(vehicleDiv);
+            });
+        });
+    });
+    </script>
+</body>
+</html>
